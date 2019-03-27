@@ -1,0 +1,144 @@
+1. Eloquent Javascript Chapter 1: 
+  (Backtick-quoted strings, template literals).
+
+2. https://eloquentjavascript.net/code/intro.js
+
+3. 10, 8, 6, 4[, 2] vs. 10, 7, 4[, 1[, -2]]
+
+4. How can you calculate the answers using Javascript? 
+   (At least six expressions.) 
+
+5. Please pay attention to what the question is asking: 
+
+console.log( typeof console ); // object 
+console.log( typeof console.log ); // function 
+
+6. Here your answer was fine:
+
+let theNumber = Number(prompt("Enter a number"));
+
+if (!Number.isNaN(theNumber)) {
+  console.log("The square root for that number is " + Math.sqrt(theNumber));
+} else {
+  console.log("You did not in fact enter a valid number");
+}
+
+7. Note I ask for two things: 
+
+function leapYear(year) {
+  if (year < 1582) {
+    if (year % 4 == 0) {
+      console.log(year + " is a leap year!"); 	 
+    } else {
+      console.log(year + " is not a leap year!");
+    }
+  } else {
+    if (year % 4 == 0) { 
+      if (year % 100 == 0) {
+        if (year % 400 == 0) {
+          console.log(year + " is a leap year!"); 
+        } else {
+          console.log(year + " is NOT a leap year!"); 
+        }   
+      } else {
+        console.log(year + " is a leap year!"); 
+      } 
+    } else { 
+      console.log(year + " is not a leap year!"); 
+    } 
+
+    // if (year % 100 == 0 && year % 400 == 0) {
+    //   console.log(year + " is a leap year!");
+    // } else {
+    //   console.log(year + " is not a leap year!"); 
+    // }
+
+  }
+}
+
+The second thing would be the one expression program.
+
+8. Good. 
+
+9. Each one needs to be properly addressed like so:
+
+let a = 3;
+
+a = a++ + ++a + ++a;
+//  3 and a has just become 4
+//  3   + 5 because a has just become it 
+//  3   + 5   + 6 and a has just become 7
+//  3 + 5 + 6 is 14 and we put 14 in a (so 7 is gone)
+
+console.log( a );
+
+Here if you think that 7 doesn't appear change to:
+
+let a = 3;
+
+b = a++ + ++a + ++a;
+//  3 and a has just become 4
+//  3   + 5 because a has just become it 
+//  3   + 5   + 6 and a has just become 7
+//  3 + 5 + 6 is 14 and we put 14 in a (so 7 is gone)
+
+console.log( a ); // 7
+console.log( b ); // 14 
+
+10. See the example we discussed:
+
+let size = 17; 
+
+var four_row = function (row) {
+                 var line = "";
+                 for (var col = 0; col < size; col++) {
+                   line += ( row == Math.floor(size / 2) && col <= Math.round((size + 6) / 2) - 1 ||
+                             col == Math.floor(size / 2) && row >= Math.round(size / 2)           ||
+                             col == Math.floor(size / 2) && row >= Math.round(size / 4) + 1       ||
+                             row + col == Math.floor(size / 2)
+                            ) ? "+ " : "- ";
+                 }
+                 return line;
+               }
+                     
+console.log( four_row(0) ); 
+console.log( four_row(1) ); 
+console.log( four_row(2) ); 
+console.log( four_row(3) ); 
+console.log( four_row(4) ); 
+console.log( four_row(5) ); 
+console.log( four_row(6) ); 
+console.log( four_row(7) ); 
+console.log( four_row(8) ); 
+console.log( four_row(9) ); 
+console.log( four_row(10) ); 
+
+- - - - - - - - + - - - - - - - - 
+- - - - - - - + - - - - - - - - - 
+- - - - - - + - - - - - - - - - - 
+- - - - - + - - - - - - - - - - - 
+- - - - + - - - - - - - - - - - - 
+- - - + - - - - + - - - - - - - - 
+- - + - - - - - + - - - - - - - - 
+- + - - - - - - + - - - - - - - - 
++ + + + + + + + + + + + - - - - - 
+- - - - - - - - + - - - - - - - - 
+- - - - - - - - + - - - - - - - - 
+
+11. https://www.w3schools.com/jsref/jsref_reduce.asp
+
+let a = [2, 3, 4];
+
+function getSum(total, num) {
+  return total + num;
+}
+
+console.log( a.reduce( getSum, 0 ) ); 
+
+We can also do this:
+
+console.log([2, 3, 8].reduce(function (total, num) { return total + num; }, 0 )); 
+                   
+And then we can simplify further: 
+
+console.log([7, 3, 8, -2].reduce((total, num) => { return total + num; }, 0 ));                    
